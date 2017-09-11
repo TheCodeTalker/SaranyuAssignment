@@ -192,6 +192,8 @@
             <connections>
                 <outlet property="iboCityName" destination="xrL-ct-IW4" id="dJK-cv-aE3"/>
                 <outlet property="iboDate" destination="gSW-9w-1CN" id="ESV-jz-5GV"/>
+                <outlet property="iboHumidity" destination="4cY-HN-keW" id="XKY-lU-RC0"/>
+                <outlet property="iboMInAndMax" destination="HhY-Ad-Uux" id="fgf-XR-gRF"/>
                 <outlet property="iboTemperature" destination="SnL-Cs-f6A" id="uy9-gp-9ta"/>
                 <outlet property="iboWetherType" destination="zvk-Wy-2ZA" id="ZYM-oq-p0d"/>
             </connections>

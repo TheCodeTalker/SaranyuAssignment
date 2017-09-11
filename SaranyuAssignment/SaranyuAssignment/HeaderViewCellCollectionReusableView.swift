@@ -10,6 +10,8 @@ import UIKit
 
 class HeaderViewCellCollectionReusableView: UICollectionReusableView {
 
+    @IBOutlet weak var iboMInAndMax: UILabel!
+    @IBOutlet weak var iboHumidity: UILabel!
     @IBOutlet weak var iboWetherType: UILabel!
     @IBOutlet weak var iboTemperature: UILabel!
     @IBOutlet weak var iboDate: UILabel!
