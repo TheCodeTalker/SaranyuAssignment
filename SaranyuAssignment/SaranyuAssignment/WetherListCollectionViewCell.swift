@@ -35,32 +35,3 @@ class WetherListCollectionViewCell: UICollectionViewCell {
 
 }
 
-extension Date {
-    func dayOfWeek() -> String? {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "EEEE"
-        return dateFormatter.string(from: self)
-        // or capitalized(with: locale)
-    }
-    func monthName() -> String? {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MMMM"
-        return dateFormatter.string(from: self)
-        // or capitalized(with: locale)
-    }
-    func dayNumber() -> String? {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "DD"
-        return dateFormatter.string(from: self)
-    }
-}
-
-
-extension Double{
-    func celsius() -> String {
-        let celsius = (self - 32.0) * (5.0/9.0)
-        return String(format: "%.0f", celsius)
-        
-    }
-}
-

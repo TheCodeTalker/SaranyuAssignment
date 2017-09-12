@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9EE78891D0EA205FB1EAB67B /* Pods_SaranyuAssignment.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F9DF3C97EB3117B8CA27D32 /* Pods_SaranyuAssignment.framework */; };
+		B66056A21F68184900462E52 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66056A11F68184900462E52 /* Helper.swift */; };
 		B6C0E0B11F66591B00470396 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C0E0B01F66591B00470396 /* AppDelegate.swift */; };
 		B6C0E0B31F66591B00470396 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C0E0B21F66591B00470396 /* ViewController.swift */; };
 		B6C0E0B61F66591B00470396 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6C0E0B41F66591B00470396 /* Main.storyboard */; };
@@ -27,6 +29,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		233239C7D66A7255A1449A74 /* Pods-SaranyuAssignment.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SaranyuAssignment.release.xcconfig"; path = "Pods/Target Support Files/Pods-SaranyuAssignment/Pods-SaranyuAssignment.release.xcconfig"; sourceTree = "<group>"; };
+		3F9DF3C97EB3117B8CA27D32 /* Pods_SaranyuAssignment.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SaranyuAssignment.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B66056A11F68184900462E52 /* Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		B6C0E0AD1F66591A00470396 /* SaranyuAssignment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SaranyuAssignment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6C0E0B01F66591B00470396 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B6C0E0B21F66591B00470396 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -46,6 +51,7 @@
 		B6C0E0E71F66C85100470396 /* WetherList+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "WetherList+CoreDataClass.swift"; path = "../WetherList+CoreDataClass.swift"; sourceTree = "<group>"; };
 		B6C0E0E81F66C85100470396 /* WetherList+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "WetherList+CoreDataProperties.swift"; path = "../WetherList+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		B6C0E0EC1F66C8BB00470396 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		D8F70DEDA7BD7BBB49A1EE11 /* Pods-SaranyuAssignment.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SaranyuAssignment.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SaranyuAssignment/Pods-SaranyuAssignment.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,17 +59,36 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9EE78891D0EA205FB1EAB67B /* Pods_SaranyuAssignment.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7C600E2DF6662C543FA69DFC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3F9DF3C97EB3117B8CA27D32 /* Pods_SaranyuAssignment.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B66056A01F68182800462E52 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				B66056A11F68184900462E52 /* Helper.swift */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
 		B6C0E0A41F66591A00470396 = {
 			isa = PBXGroup;
 			children = (
 				B6C0E0AF1F66591B00470396 /* SaranyuAssignment */,
 				B6C0E0AE1F66591A00470396 /* Products */,
+				E124810036F20ABF8E20972B /* Pods */,
+				7C600E2DF6662C543FA69DFC /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -78,13 +103,12 @@
 		B6C0E0AF1F66591B00470396 /* SaranyuAssignment */ = {
 			isa = PBXGroup;
 			children = (
+				B66056A01F68182800462E52 /* Util */,
 				B6C0E0F01F66E8C800470396 /* Controller */,
 				B6C0E0EE1F66E86C00470396 /* Views */,
 				B6C0E0EB1F66C87300470396 /* model */,
 				B6C0E0C81F665B5D00470396 /* Service */,
 				B6C0E0C51F665AEB00470396 /* AppResources */,
-				B6C0E0D11F66696600470396 /* HeaderViewCellCollectionReusableView.swift */,
-				B6C0E0D51F667FE800470396 /* WetherListCollectionViewCell.swift */,
 			);
 			path = SaranyuAssignment;
 			sourceTree = "<group>";
@@ -145,6 +169,8 @@
 			children = (
 				B6C0E0D21F66696600470396 /* HeaderViewCellCollectionReusableView.xib */,
 				B6C0E0D61F667FE800470396 /* WetherListCollectionViewCell.xib */,
+				B6C0E0D51F667FE800470396 /* WetherListCollectionViewCell.swift */,
+				B6C0E0D11F66696600470396 /* HeaderViewCellCollectionReusableView.swift */,
 			);
 			name = CollectionViewCells;
 			sourceTree = "<group>";
@@ -157,6 +183,15 @@
 			name = Controller;
 			sourceTree = "<group>";
 		};
+		E124810036F20ABF8E20972B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D8F70DEDA7BD7BBB49A1EE11 /* Pods-SaranyuAssignment.debug.xcconfig */,
+				233239C7D66A7255A1449A74 /* Pods-SaranyuAssignment.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -164,9 +199,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B6C0E0C21F66591C00470396 /* Build configuration list for PBXNativeTarget "SaranyuAssignment" */;
 			buildPhases = (
+				CA26857E574C5FBC90BE9C3C /* [CP] Check Pods Manifest.lock */,
 				B6C0E0A91F66591A00470396 /* Sources */,
 				B6C0E0AA1F66591A00470396 /* Frameworks */,
 				B6C0E0AB1F66591A00470396 /* Resources */,
+				2ACC21B9167A0C0A60835F28 /* [CP] Embed Pods Frameworks */,
+				B7F9F45159C1A140C2A08CA8 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -230,6 +268,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		2ACC21B9167A0C0A60835F28 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SaranyuAssignment/Pods-SaranyuAssignment-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B7F9F45159C1A140C2A08CA8 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SaranyuAssignment/Pods-SaranyuAssignment-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CA26857E574C5FBC90BE9C3C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		B6C0E0A91F66591A00470396 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -242,6 +328,7 @@
 				B6C0E0B31F66591B00470396 /* ViewController.swift in Sources */,
 				B6C0E0EA1F66C85100470396 /* WetherList+CoreDataProperties.swift in Sources */,
 				B6C0E0D71F667FE800470396 /* WetherListCollectionViewCell.swift in Sources */,
+				B66056A21F68184900462E52 /* Helper.swift in Sources */,
 				B6C0E0CA1F665BB700470396 /* APIService.swift in Sources */,
 				B6C0E0B11F66591B00470396 /* AppDelegate.swift in Sources */,
 			);
@@ -364,6 +451,7 @@
 		};
 		B6C0E0C31F66591C00470396 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D8F70DEDA7BD7BBB49A1EE11 /* Pods-SaranyuAssignment.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = J9PJNU3T28;
@@ -377,6 +465,7 @@
 		};
 		B6C0E0C41F66591C00470396 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 233239C7D66A7255A1449A74 /* Pods-SaranyuAssignment.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = J9PJNU3T28;

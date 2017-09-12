@@ -9,6 +9,14 @@
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="OpenSans-CondBold.ttf">
+            <string>OpenSans-CondensedBold</string>
+        </array>
+        <array key="OpenSans-CondLight.ttf">
+            <string>OpenSans-CondensedLight</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -23,18 +31,18 @@
                             <rect key="frame" x="0.0" y="0.0" width="320" height="132.5"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xrL-ct-IW4">
-                                    <rect key="frame" x="20" y="0.0" width="96.5" height="47"/>
+                                    <rect key="frame" x="20" y="0.0" width="83" height="47"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="47" id="DjW-YY-n8s"/>
                                     </constraints>
-                                    <fontDescription key="fontDescription" type="system" pointSize="40"/>
-                                    <nil key="textColor"/>
+                                    <fontDescription key="fontDescription" name="OpenSans-CondensedBold" family="Open Sans Condensed" pointSize="40"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gSW-9w-1CN">
-                                    <rect key="frame" x="20" y="47" width="51.5" height="85.5"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                    <nil key="textColor"/>
+                                    <rect key="frame" x="20" y="47" width="61.5" height="85.5"/>
+                                    <fontDescription key="fontDescription" name="OpenSans-CondensedLight" family="Open Sans" pointSize="35"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
@@ -51,21 +59,21 @@
                             <rect key="frame" x="0.0" y="133" width="320" height="297"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SnL-Cs-f6A">
-                                    <rect key="frame" x="10" y="31" width="96.5" height="37"/>
+                                    <rect key="frame" x="10" y="31" width="83" height="37"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="37" id="XFX-cy-Dl6"/>
                                     </constraints>
-                                    <fontDescription key="fontDescription" type="system" pointSize="40"/>
-                                    <nil key="textColor"/>
+                                    <fontDescription key="fontDescription" name="OpenSans-CondensedBold" family="Open Sans Condensed" pointSize="40"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zvk-Wy-2ZA">
-                                    <rect key="frame" x="10" y="96" width="75" height="21"/>
+                                    <rect key="frame" x="10" y="92" width="73" height="32"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="21" id="haE-tT-Vw0"/>
+                                        <constraint firstAttribute="height" constant="32" id="haE-tT-Vw0"/>
                                     </constraints>
-                                    <fontDescription key="fontDescription" type="system" pointSize="31"/>
-                                    <nil key="textColor"/>
+                                    <fontDescription key="fontDescription" name="OpenSans-CondensedBold" family="Open Sans Condensed" pointSize="35"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rainy" translatesAutoresizingMaskIntoConstraints="NO" id="WbF-Uc-sqQ">
@@ -80,7 +88,7 @@
                                 <constraint firstItem="WbF-Uc-sqQ" firstAttribute="top" secondItem="Gyk-Zh-LOo" secondAttribute="top" constant="9" id="9Q6-Rg-cK6"/>
                                 <constraint firstItem="SnL-Cs-f6A" firstAttribute="leading" secondItem="Gyk-Zh-LOo" secondAttribute="leading" constant="10" id="KsV-k3-gY8"/>
                                 <constraint firstAttribute="trailing" secondItem="WbF-Uc-sqQ" secondAttribute="trailing" constant="8" id="Kzk-ZR-zCU"/>
-                                <constraint firstItem="zvk-Wy-2ZA" firstAttribute="top" secondItem="SnL-Cs-f6A" secondAttribute="bottom" constant="28" id="LXN-Mu-T3k"/>
+                                <constraint firstItem="zvk-Wy-2ZA" firstAttribute="top" secondItem="SnL-Cs-f6A" secondAttribute="bottom" constant="24" id="LXN-Mu-T3k"/>
                                 <constraint firstAttribute="bottom" secondItem="WbF-Uc-sqQ" secondAttribute="bottom" constant="7" id="QvE-Dk-9aO"/>
                                 <constraint firstItem="zvk-Wy-2ZA" firstAttribute="leading" secondItem="Gyk-Zh-LOo" secondAttribute="leading" constant="10" id="dfD-Oo-J3A"/>
                                 <constraint firstItem="SnL-Cs-f6A" firstAttribute="top" secondItem="Gyk-Zh-LOo" secondAttribute="top" constant="31" id="qMK-KK-dvz"/>
@@ -100,12 +108,12 @@
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HhY-Ad-Uux">
-                                            <rect key="frame" x="85" y="25" width="42" height="21"/>
+                                            <rect key="frame" x="85" y="25" width="30" height="21"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="21" id="evg-ox-PjP"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
+                                            <fontDescription key="fontDescription" name="OpenSans-CondensedLight" family="Open Sans" pointSize="17"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -128,9 +136,9 @@
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4cY-HN-keW">
-                                            <rect key="frame" x="85" y="25" width="42" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
+                                            <rect key="frame" x="85" y="25" width="30" height="21"/>
+                                            <fontDescription key="fontDescription" name="OpenSans-CondensedLight" family="Open Sans" pointSize="17"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>

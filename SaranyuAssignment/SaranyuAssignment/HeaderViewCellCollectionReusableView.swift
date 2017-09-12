@@ -21,4 +21,13 @@ class HeaderViewCellCollectionReusableView: UICollectionReusableView {
         // Initialization code
     }
     
+    func configHeader(singleWether: WetherList) {
+        iboDate.text = "\(singleWether.date?.dayOfWeek() ?? ""),  \(singleWether.date?.monthName() ?? "")"
+        iboCityName.text = singleWether.name
+        iboWetherType.text = singleWether.wetherType
+        iboHumidity.text = "\(singleWether.humidity)%"
+        iboTemperature.text = "\(singleWether.temp.celsius())\u{00B0}"
+        iboMInAndMax.text = "\(singleWether.max.celsius())\u{00B0}/\(singleWether.min.celsius())\u{00B0}"
+    }
+    
 }

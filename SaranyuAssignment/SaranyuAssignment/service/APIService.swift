@@ -13,7 +13,7 @@ class APIService: NSObject {
     let latitude = "12.9"
     let longitude = "77.5"
     lazy var endPoint: String = {
-        return "http://api.openweathermap.org/data/2.5/find?lat=\(self.latitude)&lon=\(self.longitude)&cnt=5&appid=d32091b3739b5fd38c00f4b681ca4004&units=Fahrenheit"
+        return "http://api.openweathermap.org/data/2.5/find?lat=\(self.latitude)&lon=\(self.longitude)&cnt=5&appid=d32091b3739b5fd38c00f4b681ca4004&units=metric"
     }()
     
     func getDataWith(completion: @escaping (Result<[[String: AnyObject]]>) -> Void) {

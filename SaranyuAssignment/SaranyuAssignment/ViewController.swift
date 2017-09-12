@@ -8,7 +8,8 @@
 
 import UIKit
 import CoreData
-class ViewController: UIViewController {
+import NVActivityIndicatorView
+class ViewController: UIViewController,NVActivityIndicatorViewable {
     
     lazy var fetchedhResultController: NSFetchedResultsController<NSFetchRequestResult> = {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: String(describing: WetherList.self))
@@ -20,22 +21,40 @@ class ViewController: UIViewController {
 
      var blockOperations: [BlockOperation] = []
     @IBOutlet weak var collectionView: UICollectionView!
+    //MARK: - View Lifecycle
     override func viewDidLoad() {
-        super.viewDidLoad()
+            super.viewDidLoad()
+            self.viewSetup()
+    }
+    //MARK: - View Setup
+    func viewSetup() {
         collectionView.register(UINib(nibName: "WetherListCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "WetherListCollectionViewCell")
         collectionView.register(UINib(nibName: "HeaderViewCellCollectionReusableView", bundle: nil), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "HeaderViewCellCollectionReusableView")
+        startAnimating(CGSize(width: 30, height: 30), message: "Please wait...", type: NVActivityIndicatorType(rawValue: 30)!)
+        let gradient: CAGradientLayer = CAGradientLayer()
+        
+        gradient.colors = [UIColor(red: 66/255, green: 180/255, blue: 255/255, alpha: 1), UIColor(red: 173/255, green: 231/255, blue: 251/255, alpha: 1)]
+        gradient.locations = [0.0 , 1.0]
+        gradient.startPoint = CGPoint(x: 0.0, y: 1.0)
+        gradient.endPoint = CGPoint(x: 1.0, y: 1.0)
+        gradient.frame = CGRect(x: 0.0, y: 0.0, width: self.view.frame.size.width, height: self.view.frame.size.height)
+        
+        self.collectionView.backgroundView?.layer.insertSublayer(gradient, at: 0)
+        
         updateCollectionContent()
-        }
+
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    //MARK: - make api call and clear core data
     func updateCollectionContent() {
         
         do {
             try self.fetchedhResultController.performFetch()
-            print("COUNT FETCHED FIRST: \(self.fetchedhResultController.sections?[0].numberOfObjects)")
         } catch let error  {
             print("ERROR: \(error)")
         }
@@ -46,13 +65,20 @@ class ViewController: UIViewController {
             case .Success(let data):
                 self.clearData()
                 self.saveInCoreDataWith(array: data)
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3.0) {
+                    self.stopAnimating()
+                }
             case .Error(let message):
                 DispatchQueue.main.async {
-                   //self.showAlertWith(title: "Error", message: message)
+                    let alert = UIAlertController(title: "Error", message: message, preferredStyle: UIAlertControllerStyle.alert)
+                    alert.addAction(UIAlertAction(title: "ok", style: UIAlertActionStyle.default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
                 }
             }
         }
     }
+    
+    //MARK: - insert into coredata
     
     private func createPhotoEntityFrom(dictionary: [String: AnyObject]) -> NSManagedObject? {
         
@@ -68,13 +94,18 @@ class ViewController: UIViewController {
             wetherEntity.max = temp?["temp_max"] as! Double
             let weatherType = dictionary["weather"] as? [[String:AnyObject]]
             wetherEntity.wetherType = weatherType?.first?["main"] as? String
-//            let mediaDictionary = dictionary["media"] as? [String: AnyObject]
-//            wetherEntity.mediaURL = mediaDictionary?["m"] as? String
             return wetherEntity
         }
         return nil
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        UIApplication.shared.statusBarStyle = .lightContent
+        let statusBar: UIView = UIApplication.shared.value(forKey: "statusBar") as! UIView
+        statusBar.backgroundColor = UIColor(red: 48/255, green: 151/255, blue: 187/255, alpha: 1)
+    }
+    
+    //MARK: - save
     private func saveInCoreDataWith(array: [[String: AnyObject]]) {
         _ = array.map{self.createPhotoEntityFrom(dictionary: $0)}
         do {
@@ -83,12 +114,16 @@ class ViewController: UIViewController {
             print(error)
         }
     }
+    
+    //MARK: - deinit
     deinit {
         for operation: BlockOperation in blockOperations {
             operation.cancel()
         }
         blockOperations.removeAll(keepingCapacity: false)
     }
+    
+    //MARK: - clear coredata
     
     private func clearData() {
         do {
@@ -111,11 +146,11 @@ class ViewController: UIViewController {
 extension ViewController: NSFetchedResultsControllerDelegate {
     
     
-    
+    //MARK: -The fetched results controller reports changes 
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
         
         if type == NSFetchedResultsChangeType.insert {
-            print("Insert Object: \(newIndexPath)")
+            print("Insert Object: \(newIndexPath ?? IndexPath(item: 0, section: 0))")
             if (collectionView?.numberOfSections)! > 0 {
                     blockOperations.append(
                         BlockOperation(block: { [weak self] in
@@ -133,7 +168,7 @@ extension ViewController: NSFetchedResultsControllerDelegate {
  
 
         else if type == NSFetchedResultsChangeType.delete {
-            print("Delete Object: \(indexPath)")
+            print("Delete Object: \(indexPath ?? IndexPath(item: 0, section: 0))")
                 blockOperations.append(
                     BlockOperation(block: { [weak self] in
                         if let this = self {
@@ -186,9 +221,11 @@ extension ViewController: NSFetchedResultsControllerDelegate {
         }
     }
     
+    //MARK: - Notifies the receiver that the fetched results controller has completed processing
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         
-        blockOperations.removeAll(keepingCapacity: false)
+            self.collectionView.reloadData()
+            blockOperations.removeAll(keepingCapacity: false)
     }
     
     }
@@ -210,16 +247,7 @@ extension ViewController : UICollectionViewDataSource{
                                                                              for: indexPath) as! HeaderViewCellCollectionReusableView
             
             if self.fetchedhResultController.sections?[0].numberOfObjects ?? 0 > 0{
-            if let singleWether = fetchedhResultController.object(at: indexPath) as? WetherList {
-                headerView.iboDate.text = "\(singleWether.date?.dayOfWeek() ?? "") \(singleWether.date?.dayNumber() ?? "") \(singleWether.date?.monthName() ?? "")"
-                headerView.iboCityName.text = singleWether.name
-                headerView.iboWetherType.text = singleWether.wetherType
-                    headerView.iboHumidity.text = "\(singleWether.humidity)%"
-                headerView.iboTemperature.text = "\(singleWether.temp.celsius())"
-                headerView.iboMInAndMax.text = "\(singleWether.max.celsius())\u{00B0}/\(singleWether.min.celsius())\u{00B0}"
-                
-            }
-            }
+            if let singleWether = fetchedhResultController.object(at: indexPath) as? WetherList {headerView.configHeader(singleWether: singleWether)}}
             return headerView
         default:
             fatalError("this is NOT should happen!!")
@@ -231,15 +259,12 @@ extension ViewController : UICollectionViewDataSource{
         if let singleWether = fetchedhResultController.object(at: indexPath) as? WetherList {
             cell.configCell(wether: singleWether)
         }
-        
-        
         return cell
     }
     
 }
 extension Collection where Indices.Iterator.Element == Index {
     
-    /// Returns the element at the specified index iff it is within bounds, otherwise nil.
     subscript (safe index: Index) -> Generator.Element? {
         return indices.contains(index) ? self[index] : nil
     }
@@ -247,7 +272,6 @@ extension Collection where Indices.Iterator.Element == Index {
 
 extension ViewController:UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        // ofSize should be the same size of the headerView's label size:
         return CGSize(width: collectionView.frame.size.width, height: 500)
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -255,24 +279,5 @@ extension ViewController:UICollectionViewDelegateFlowLayout{
     }
     
 }
-
-extension Date {
-    /**
-     Formats a Date
-     
-     - parameters format: (String) for eg dd-MM-yyyy hh-mm-ss
-     */
-    func format(format:String = "dd-MM-yyyy hh-mm-ss") -> Date {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = format
-        let dateString = dateFormatter.string(from: self)
-        if let newDate = dateFormatter.date(from: dateString) {
-            return newDate
-        } else {
-            return self
-        }
-    }
-}
-
 
 
